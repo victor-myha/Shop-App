@@ -1,0 +1,34 @@
+.headerName{
+    text-align: center;
+}
+.allProducts{
+    display: flex;
+    flex-direction: column;
+}
+.product{
+    width: 80%;
+display: flex;
+}
+.product img{
+max-width: 300px;
+
+}
+.info{
+width: 300px;
+display: flex;
+flex-direction: column;
+}
+.imgWrapper{
+    width: 350px;
+}
+.closeBtn{
+    
+    text-align: right;
+}
+.closeBtn button{
+    background-color: rgb(231, 42, 89);
+}
+.productWrapper{
+    display: flex;
+    justify-content: center;
+}
