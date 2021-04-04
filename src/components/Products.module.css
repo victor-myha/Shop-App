@@ -6,8 +6,14 @@
     flex-direction: column;
 }
 .product{
-    width: 80%;
+width: 80%;
 display: flex;
+justify-content: space-around;
+border: 1px solid rgba(0, 0, 0, .2);
+border-radius: .3rem;
+box-shadow: 0 0 3px rgba(0,0,0,0.5);
+padding: 10px;
+margin: 20px;
 }
 .product img{
 max-width: 300px;
@@ -22,12 +28,26 @@ flex-direction: column;
     width: 350px;
 }
 .closeBtn{
-    
     text-align: right;
 }
-.closeBtn button{
-    background-color: rgb(231, 42, 89);
+.closeBtn span{
+    float: right;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    text-decoration: none;
 }
+.closeBtn span:focus,
+.closeBtn span:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: .75;
+    }
 .productWrapper{
     display: flex;
     justify-content: center;
