@@ -7,10 +7,7 @@ let initialState = {
         detailInfo: 'Диван Кароліна з його простим, акуратним і універсальним дизайном підійде для приміщень різного типу.',
         briefDescription: 'Короткий опис',
         count: 4,
-        size: {
-            width: 200,
-            height: 200
-        },
+        size: '200x200',
         weight: '200g',
         comments: [
             {
@@ -27,10 +24,7 @@ let initialState = {
         detailInfo: 'Легкий і пишний наповнювач надає подушці мякість і стійку повітряну форму. Подушка для сну (холлофайбер) володіє високими гігієнічними і антиалергенними властивостями.',
         briefDescription: 'Короткий опис',
         count: 10,
-        size: {
-            width: 400,
-            height: 100
-        },
+        size: '200x200',
         weight: '200g',
         comments: [
             {
@@ -47,10 +41,7 @@ let initialState = {
         detailInfo: 'Полушерстяной плед Ярослав изготовлен из овечьей шерсти с добавлением акрила высочайшего качества. Такой плед очень практичен в эксплуатации, теплый, удобный и устойчив к сминанию.',
         briefDescription: 'Короткий опис',
         count: 7,
-        size: {
-            width: 500,
-            height: 200
-        },
+        size: '200x200',
         weight: '200g',
         comments: [
             {
@@ -72,6 +63,13 @@ const itemReducer = (state = initialState,action) => {
     return{
       ...state,
     products: [...state.products].filter(item => item.id !== action.id)
+    }
+  case 'ADD_PRODUCT':
+    const proArr = [...state.products];
+    const count = proArr.push(action.newProductData);
+    return{
+      ...state,
+    products: proArr
     }
   case 'SORT_COUNT':
     return{
