@@ -53,7 +53,7 @@ let initialState = {
     ]},
 ],
 isSortCount: false,
-    
+productDetailsPage: [],
 }
 
 const itemReducer = (state = initialState,action) => {
@@ -103,7 +103,19 @@ const itemReducer = (state = initialState,action) => {
           return 1
         return 0 // Никакой сортировки
         })
-
+    }
+  case 'PRODUCT_DETAILS_PAGE':
+    return{
+      ...state,
+      productDetailsPage: [...state.products].filter(item => item.id == action.productId)
+    }
+  case 'EDIT_PRODUCT':
+    const proArr2 = [...state.products];
+    const position = action.editProductData.id - 1;
+    const count2 = proArr2.splice(position, 1, action.editProductData);
+    return{
+      ...state,
+    products: proArr2
     }
     
   default:

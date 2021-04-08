@@ -8,7 +8,7 @@ const App = () => {
     <div>
       <Route exact path='/' render={() => <Redirect to={'/products'}/>}/>
       <Route path='/products' render={()=><Products/>} />
-      <Route path='/details/:userId?' render={()=><Details/>} />
+      <Route path='/details/:productId?' render={()=><Details/>} />
     </div>
   );
 }

@@ -32,7 +32,7 @@ const Item = (props) => {
                     <div>Кількість: {props.p.count}</div>
                     <div>Вага: {props.p.weight}</div>
                     <div>Короткий опис: {props.p.briefDescription}</div>
-                    <NavLink to={'/details'}><button>Деталі</button></NavLink> 
+                    <NavLink to={`/details/${props.p.id}`}><button>Деталі</button></NavLink> 
                 </div>
             </div>
             
