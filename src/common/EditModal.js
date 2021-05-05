@@ -27,17 +27,27 @@ class EditModal extends React.Component {
             count: this.props.productDetailsPage[0].count,
             size: this.props.productDetailsPage[0].size,
             weight: this.props.productDetailsPage[0].weight,
+            comments: [
+                {
+                  id: 11,
+                  description: 'Comment 1 by first product',
+                  date: "14:00 31.03.2002",
+                },
+                {
+                  id: 12,
+                  description: 'Comment 2 by first product',
+                  date: "12:00 2.03.2002",
+                }
+            ]
         }
     }
     handleSubmit = (event) =>{
         event.preventDefault();
-        console.log('form is submited',this.state)
         this.props.modalSubmit(this.state)
     }
     handleChanges = (event) =>{
         const name = event.target.name;
         this.setState({[name]: event.target.value});
-        console.log('something changed',event.target.value)
     }
 
     render(){
@@ -50,7 +60,7 @@ class EditModal extends React.Component {
                     <div className={s.modalWindow}>
                         <div className={s.modalHeader}>
                             <div className={s.modalTitle}>{this.props.title}</div>
-                            <span title="Close" className={s.modalClose} onClick={this.props.modalCancel}>X</span>
+                            
                         </div>
                         <div className={s.modalBody}>
                            
@@ -64,8 +74,9 @@ class EditModal extends React.Component {
                                 <input type="text" name="weight" defaultValue={this.state.weight} onChange={this.handleChanges} placeholder="Вага"/>
                                 <div className={s.modalFooter}>
                             <button type="submit" className={s.Submit}>Зберегти</button>
-                            <button onClick={this.props.modalCancel} className={s.Cancel}>Скасувати</button>
+                            <button onClick={this.props.modalClose} className={s.Cancel}>Скасувати</button>
                         </div>
+                       
                             </form>
                             
                         </div>

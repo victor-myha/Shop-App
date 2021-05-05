@@ -1,6 +1,6 @@
 let initialState = {
     products: [
-        {
+        { 
         id: 1,
         imageUrl: 'https://www.fabrica-vika.com.ua/components/com_jshopping/files/img_products/Divan-Chikago-B3.jpg',
         name: 'Ящірка',
@@ -10,12 +10,16 @@ let initialState = {
         size: '200x200',
         weight: '200g',
         comments: [
-            {
-            id: 3,
-            productId: 1,
-            description: 'some text here',
-            date: "14:00 22.08.2021",
-        },
+          {
+            id: 1,
+            description: 'Comment 1 by first product',
+            date: "14:00 31.03.2002",
+          },
+          {
+            id: 2,
+            description: 'Comment 2 by first product',
+            date: "14:00 31.03.2002",
+          }
     ]},
     {
         id: 2,
@@ -27,12 +31,16 @@ let initialState = {
         size: '200x200',
         weight: '200g',
         comments: [
-            {
-            id: 3,
-            productId: 1,
-            description: 'some text here',
-            date: "14:00 22.08.2021",
-        },
+          {
+            id: 1,
+            description: 'Comment 1 by second product',
+            date: "13:00 01.01.2003",
+          },
+          {
+            id: 2,
+            description: 'Comment 2 by second product',
+            date: "13:00 01.01.2003",
+          }
     ]},
     {
         id: 3,
@@ -44,16 +52,42 @@ let initialState = {
         size: '200x200',
         weight: '200g',
         comments: [
-            {
-            id: 3,
-            productId: 1,
-            description: 'some text here',
-            date: "14:00 22.08.2021",
-        },
+          {
+            id: 1,
+            description: 'Comment 1 by third product',
+            date: "12:00 2.04.2004",
+          },
+          {
+            id: 2,
+            description: 'Comment 2 by third product',
+            date: "12:00 2.04.2004",
+          }
     ]},
 ],
 isSortCount: false,
-productDetailsPage: [],
+productDetailsPage:[
+  {
+  id: 1,
+  imageUrl: 'https://www.fabrica-vika.com.ua/components/com_jshopping/files/img_products/Divan-Chikago-B3.jpg',
+  name: 'Ящірка',
+  detailInfo: 'Диван Кароліна з його простим, акуратним і універсальним дизайном підійде для приміщень різного типу.',
+  briefDescription: 'Короткий опис',
+  count: 4,
+  size: '200x200',
+  weight: '200g',
+  comments: [
+    {
+      id: 11,
+      description: 'Comment 1 by first product',
+      date: "14:00 31.03.2002",
+    },
+    {
+      id: 12,
+      description: 'Comment 2 by first product',
+      date: "14:00 31.03.2002",
+    }
+  ]},
+],
 }
 
 const itemReducer = (state = initialState,action) => {
@@ -105,18 +139,40 @@ const itemReducer = (state = initialState,action) => {
         })
     }
   case 'PRODUCT_DETAILS_PAGE':
+    let bylka = [...state.products].filter(item => item.id == action.productId)
+    console.log(bylka)
     return{
       ...state,
       productDetailsPage: [...state.products].filter(item => item.id == action.productId)
     }
   case 'EDIT_PRODUCT':
-    const proArr2 = [...state.products];
     const position = action.editProductData.id - 1;
-    const count2 = proArr2.splice(position, 1, action.editProductData);
+    let allProduc = [...state.products];
+    let bbb = allProduc.splice(position, 1, action.editProductData)
+    console.log('ТУт якась х-ня',allProduc)
+    console.log('Edit Product bbb',bbb)
+     return{
+      ...state,
+      productDetailsPage: [allProduc[position]]
+    }
+  case 'NEW_COMMENT':
+    const proCom = [...state.products];
+    const blet = proCom[action.productId-1].comments.push(action.newComment);
     return{
       ...state,
-    products: proArr2
+    products: proCom
     }
+    case 'DELETE_COMMENT':
+    
+    let delElm = [...state.products].filter(item => item.id == action.productId)
+      
+  let normalComments = delElm[0].comments.filter(item => item.id !== action.commentId)
+  delElm[0].comments = normalComments
+      
+return{
+        ...state,
+        productDetailsPage: delElm
+      }
     
   default:
     return state;
