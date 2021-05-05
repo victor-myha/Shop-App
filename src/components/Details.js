@@ -6,7 +6,8 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import EditModal from '../common/EditModal';
 import s from '../common/Modal.module.css';
-
+import pen from '../img/pen.png';
+import logo from '../img/Garmonia.png';
 const Details = (props) => {
     let productId = props.match.params.productId;
     const [isOpen, setShowing] = useState(false)
@@ -47,17 +48,18 @@ const Details = (props) => {
 
     return(
         <>
-            <h1>Деталі</h1>
+            <NavLink to={'/products'}><h1 className={style.headerName}><img className={style.logoImg} src={logo}/></h1></NavLink>
+                <hr/>
             <div>
                     {props.productDetailsPage &&
                      props.productDetailsPage.map((p) => {
                         
                        return <div className={style.productWrapper}>
                            <div className={style.product}>
-                           <div className={style.imgWrapper}><img width="200px" height="200px" src={p.imageUrl}/></div>
+                           <div ><img width="200px" height="200px" src={p.imageUrl}/></div>
                            
                             <div className={style.info}>
-                                <button onClick={showModal}>Редагувати</button>
+                                <button className={style.editBtn} onClick={showModal}>Редагувати <img src={pen}/></button>
                                 <div>{p.name}</div>
                                 <div>Короткий опис: {p.briefDescription}</div>
                                 <div>Кількість: {p.count}</div>
@@ -70,11 +72,13 @@ const Details = (props) => {
                         </div>
                         
                     })}
-                    <div>
-                        <h1>Коментарі</h1>
+                    <hr/>
+                    <div className={s.comWrapper}>
                         
-                        <form onSubmit={handleSubmit}>
-                            <textarea type="text" name="description" defaultValue={comment} value={comment}  onChange={handleChanges} placeholder="Коментувати"/>
+                        <h2>Коментарі</h2>
+                        
+                        <form className={s.inpWrap} onSubmit={handleSubmit}>
+                            <textarea rows="5" cols="50"  type="text" name="description" defaultValue={comment} value={comment}  onChange={handleChanges} placeholder="Коментувати"/>
                             
                             <button type="submit" className={s.Submit}>Надіслати</button>
                         </form>
@@ -85,12 +89,12 @@ const Details = (props) => {
                             <div>
                                 { props.productDetailsPage &&
                                     props.productDetailsPage[0].comments.map((c)=>{
-                                        return <div>
-                                             <div className={style.closeBtn}>
-                                                 <span title="Close" onClick={()=>{props.deleteComment(c.id,productId)}}>x</span>
-                                             </div>
-                                                 <div>{c.description}</div>
-                                                 <div>{c.date}</div>
+                                        return <div className={s.commentItem}>
+                                                <div className={style.closeBtn}>
+                                                    <span title="Close" onClick={()=>{props.deleteComment(c.id,productId)}}>x</span>
+                                                </div>
+                                                <div>{c.description}</div>
+                                                <small>{c.date}</small>
                                              </div>
                                      })
                             }

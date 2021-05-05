@@ -1,9 +1,63 @@
 .headerName{
+    margin-left: 20px;
+}
+
+.logoImg{
+    max-width: 200px;
+}
+.mainContentWrapper{
+    display: flex;
+    justify-content: center;
+}
+.filters{
+    /* width: 25%; */
+}
+
+.filtersContent{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: auto;
+    border: 2px solid #D6D0D0;
+    border-radius:  0.3rem;
+    padding: 10px;
+    margin: 20px;
+}
+.filtersContent h3{
     text-align: center;
 }
+.filtersContent button{
+    margin-top: 10px;
+    background-color: #F0D3D3;
+}
+.filtersContent button:hover{
+    cursor: pointer;
+}
+
+.NewProductButtonWrapper button{
+    width: 200px;
+    height: 30px;
+    background-color: #2C852F;
+    color: #fff;
+    border-radius: 0.3rem;
+}
+.NewProductButtonWrapper :hover{
+    cursor: pointer;
+}
+
 .allProducts{
     display: flex;
     flex-direction: column;
+    /* width: 70%; */
+}
+.Detalno button{
+    background-color: #F0D3D3;
+}
+.Detalno :hover{
+   cursor: pointer;
+}
+.editBtn{
+    background-color: #F0D3D3;
 }
 .product{
 width: 80%;
@@ -12,11 +66,11 @@ justify-content: space-around;
 border: 1px solid rgba(0, 0, 0, .2);
 border-radius: .3rem;
 box-shadow: 0 0 3px rgba(0,0,0,0.5);
-padding: 10px;
+padding: 5px;
 margin: 20px;
 }
 .product img{
-max-width: 300px;
+max-width: 100%;
 
 }
 .info{

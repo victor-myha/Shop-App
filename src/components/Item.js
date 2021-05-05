@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './Products.module.css';
 import { NavLink,Route} from 'react-router-dom';
 import Modal from '../common/Modal';
+import detalno from '../img/detalno.png';
 
 const Item = (props) => {
     let modalSubmit = () => {
@@ -32,7 +33,7 @@ const Item = (props) => {
                     <div>Кількість: {props.p.count}</div>
                     <div>Вага: {props.p.weight}</div>
                     <div>Короткий опис: {props.p.briefDescription}</div>
-                    <NavLink to={`/details/${props.p.id}`}><button>Деталі</button></NavLink> 
+                    <NavLink  className={style.Detalno} to={`/details/${props.p.id}`}><button>Деталі <img src={detalno}/></button></NavLink> 
                 </div>
             </div>
             

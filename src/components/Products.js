@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import ItemContainer from './Item';
 import { connect } from 'react-redux';
-import { NavLink,Route} from 'react-router-dom';
+import { NavLink,Route,Redirect} from 'react-router-dom';
 import Details from './Details';
 import Item from './Item';
 import style from './Products.module.css';
 import NewProductModal from '../common/NewProductModal';
+import logo from '../img/Garmonia.png';
+import zrost from '../img/zrost.png';
+import spad from '../img/spad.png';
+import Abc from '../img/Abc.png';
+
 
 const Products= (props) => {
     let modalSubmit = (newProductData) => {
@@ -27,17 +32,28 @@ const Products= (props) => {
     return(
         <div>
             <div>
-                <h1 className={style.headerName}>Загальна Сторінка</h1>
-                <button onClick={showModal}>+ New</button>
-                <button onClick={props.Increase}>Зростання</button>
-                <button onClick={props.Decrease}>Спадання</button>
-                <button onClick={props.Alphabet}>За іменем</button>
-                <div className={style.allProducts}>
-                    { props.products.map((p) => {
-                            return <Item p={p} deleteProduct={props.deleteProduct}/>
-                        })
-                    }
-                    
+                <NavLink to={'/products'}><h1 className={style.headerName}><img className={style.logoImg} src={logo}/></h1></NavLink>
+                <hr/>
+                <div className={style.mainContentWrapper}>
+                    <div className={style.filtersContainer}>
+                        <div className={style.filtersContent}>
+                            <h3>Фільтри</h3>
+                            <hr/>
+                            <button onClick={props.Increase}>Зростання <img src={zrost}/></button>
+                            <button onClick={props.Decrease}>Спадання <img src={spad}/></button>
+                            <button onClick={props.Alphabet}>За іменем <img src={Abc}/></button>
+                        </div>
+                    </div>
+                    <div className={style.allProducts}>
+                        { props.products.map((p) => {
+                                return <Item key={p.id} p={p} deleteProduct={props.deleteProduct}/>
+                            })
+                        }
+                        
+                    </div>
+                    <div className={style.NewProductButtonWrapper}>
+                        <button onClick={showModal}>+ New</button>
+                    </div>
                 </div>
                
             </div>
