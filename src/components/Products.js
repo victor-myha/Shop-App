@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ItemContainer from './Item';
 import { connect } from 'react-redux';
 import { NavLink,Route,Redirect} from 'react-router-dom';
 import Details from './Details';
