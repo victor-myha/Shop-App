@@ -6,6 +6,7 @@ const App = () => {
  
   return (
     <div>
+      <h1>Загальна сторінка</h1>
       <Route exact path='/' render={() => <Redirect to={'/products'}/>}/>
       <Route path='/products' render={()=><Products/>} />
       <Route path='/details/:productId?' render={()=><Details/>} />
