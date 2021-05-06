@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import EditModal from '../common/EditModal';
 import s from '../common/Modal.module.css';
 import pen from '../img/pen.png';
-import logo from '../img/Garmonia.png';
+
 const Details = (props) => {
     let productId = props.match.params.productId;
     const [isOpen, setShowing] = useState(false)
@@ -48,8 +48,7 @@ const Details = (props) => {
 
     return(
         <>
-            <NavLink to={'/products'}><h1 className={style.headerName}><img className={style.logoImg} src={logo}/></h1></NavLink>
-                <hr/>
+            
             <div>
                     {props.productDetailsPage &&
                      props.productDetailsPage.map((p) => {
