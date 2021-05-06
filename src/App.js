@@ -1,12 +1,15 @@
 import './App.css';
-import {Route,Redirect} from 'react-router-dom';
+import {NavLink,Route,Redirect} from 'react-router-dom';
 import Products from './components/Products';
 import Details from './components/Details';
+import style from './components/Products.module.css';
+import logo from './img/Garmonia.png';
 const App = () => {
  
   return (
     <div>
-      <h1>Загальна сторінка</h1>
+      <NavLink to={'/products'}><h1 className={style.headerName}><img className={style.logoImg} src={logo}/></h1></NavLink>
+      <hr/>
       <Route exact path='/' render={() => <Redirect to={'/products'}/>}/>
       <Route path='/products' render={()=><Products/>} />
       <Route path='/details/:productId?' render={()=><Details/>} />

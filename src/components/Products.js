@@ -31,8 +31,7 @@ const Products= (props) => {
     return(
         <div>
             <div>
-                <NavLink to={'/products'}><h1 className={style.headerName}><img className={style.logoImg} src={logo}/></h1></NavLink>
-                <hr/>
+                
                 <div className={style.mainContentWrapper}>
                     <div className={style.filtersContainer}>
                         <div className={style.filtersContent}>
